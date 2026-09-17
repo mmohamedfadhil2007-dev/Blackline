@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blacklink</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="terminal-shell">
+      <section class="terminal" aria-label="Anonymous terminal chat">
+        <header class="terminal-bar">
+          <div>
+            <p class="kicker">CBI / blank relay</p>
+          </div>
+          <div class="status-cluster" aria-live="polite">
+            <span id="online-count">00 online</span>
+            <span id="pair-status">offline</span>
+          </div>
+        </header>
+
+        <section class="console" id="console" aria-live="polite">
+          <p class="system-line">system: no identity, no handles, no saved logs.</p>
+          <p class="system-line">system: realtime relay boots automatically.</p>
+        </section>
+
+        <form class="command-line" id="message-form">
+          <span aria-hidden="true">&gt;</span>
+          <input
+            id="message-input"
+            type="text"
+            autocomplete="off"
+            maxlength="700"
+            placeholder="line closed"
+            disabled
+          >
+          <button id="send-button" type="submit" disabled>Send</button>
+        </form>
+
+        <nav class="button-grid" aria-label="Terminal controls">
+          <button id="connect-button" type="button">Connect</button>
+          <button id="skip-button" type="button" disabled>New Line</button>
+          <button id="clear-button" type="button">Clear</button>
+          <button id="panic-button" type="button">Panic Blank</button>
+          <button id="noise-button" type="button">Noise</button>
+          <div class="brightness-control" aria-label="Brightness controls">
+            <button id="brightness-down" type="button" aria-label="Dim terminal">-</button>
+            <button id="brightness-up" type="button" aria-label="Brighten terminal">+</button>
+          </div>
+          <button id="disconnect-button" type="button">Disconnect</button>
+        </nav>
+      </section>
+    </main>
+
+    <div id="idle-modal" class="idle-modal hidden" role="dialog" aria-modal="true" aria-labelledby="idle-title">
+      <div class="idle-box">
+        <p class="kicker">presence check</p>
+        <h2 id="idle-title">are you here?</h2>
+        <p id="idle-countdown">disconnecting in 10</p>
+        <button id="idle-yes" type="button">Yes</button>
+      </div>
+    </div>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
