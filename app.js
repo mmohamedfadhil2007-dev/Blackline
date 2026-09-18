@@ -160,6 +160,14 @@ function updateOnlineCount() {
   onlineCount.textContent = `${String(count).padStart(2, "0")} online`;
 }
 
+function findPresenceUser(nextClientId) {
+  return getPresenceUsers().find((user) => user.clientId === nextClientId);
+}
+
+function isWaitingUser(nextClientId) {
+  return findPresenceUser(nextClientId)?.status === "waiting";
+}
+
 async function updateLobbyStatus(status) {
   if (!lobby) {
     return;
@@ -197,7 +205,7 @@ roomId = "";
 }
 
 async function openRoom(nextRoomId, nextPartnerId) {
-  if (pairing || paired) {
+  if (!isWaitingUser(nextPartnerId) || pairing || paired) {
     return;
   }
 
@@ -243,7 +251,7 @@ async function openRoom(nextRoomId, nextPartnerId) {
 }
 
 async function acceptMatch(match) {
-  if (!connected || paired || match.targetId !== clientId) {
+  if (!connected || paired || match.targetId !== clientId || !findPresenceUser(match.from)) {
     return;
   }
 
@@ -323,7 +331,7 @@ async function connectRealtime() {
     }
 
     if (status === "CHANNEL_ERROR") {
-      writeLine("system: realtime connection failed.", "danger-line");
+      writeLine("system: realtime reconnecting.", "alert-line");
     }
   });
 }
