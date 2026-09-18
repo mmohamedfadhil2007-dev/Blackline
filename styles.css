@@ -6,6 +6,7 @@
   --panel-soft: #0b1711;
   --line: #183126;
   --line-hot: #13a10e;
+  --hover-green: #4ddc9b;
   --text: #d6fbe7;
   --muted: #6e977f;
   --danger: #ff6262;
@@ -170,8 +171,8 @@ button {
 }
 
 button:hover:not(:disabled) {
-  border-color: var(--line-hot);
-  color: var(--line-hot);
+  border-color: var(--hover-green);
+  color: var(--hover-green);
 }
 
 button:disabled {
