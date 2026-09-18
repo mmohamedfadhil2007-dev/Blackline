@@ -316,6 +316,14 @@ async function connectRealtime() {
 
   lobby.on("presence", { event: "sync" }, () => {
     updateOnlineCount();
+
+    if (paired && partnerId && !findPresenceUser(partnerId)) {
+      joinChat("system: counterpart disconnected. standing by for another live terminal.").catch(() => {
+        writeLine("system: reconnect to queue failed.", "danger-line");
+      });
+      return;
+    }
+
     attemptPair();
   });
 
