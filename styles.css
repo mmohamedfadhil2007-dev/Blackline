@@ -92,8 +92,8 @@ input {
 }
 
 .status-cluster .live {
-  color: var(--line-hot);
-  border-color: rgba(19, 161, 14, 0.5);
+  color: var(--hover-green);
+  border-color: rgba(77, 220, 155, 0.5);
 }
 
 .console {
@@ -144,7 +144,7 @@ input {
 }
 
 .command-line span {
-  color: var(--line-hot);
+  color: var(--hover-green);
 }
 
 input {
