@@ -205,7 +205,7 @@ roomId = "";
 }
 
 async function openRoom(nextRoomId, nextPartnerId) {
-  if (!isWaitingUser(nextPartnerId) || pairing || paired) {
+  if (!findPresenceUser(nextPartnerId) || pairing || paired) {
     return;
   }
 
