@@ -262,12 +262,21 @@ body.blank #panic-button {
 }
 
 @media (max-width: 850px) {
+  body {
+    overflow-y: auto;
+  }
+
   .terminal-shell {
+    min-height: 100dvh;
+    height: auto;
+    place-items: start center;
     padding: 12px;
   }
 
   .terminal {
-    height: calc(100vh - 24px);
+    min-height: calc(100dvh - 24px);
+    height: auto;
+    grid-template-rows: auto minmax(220px, 38vh) auto auto;
     padding: 12px;
   }
 
@@ -277,6 +286,10 @@ body.blank #panic-button {
 
   .status-cluster {
     justify-content: start;
+  }
+
+  .console {
+    max-height: 38vh;
   }
 
   .command-line {
@@ -289,5 +302,34 @@ body.blank #panic-button {
 
   .button-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #connect-button {
+    order: 1;
+  }
+
+  #skip-button {
+    order: 2;
+  }
+
+  #clear-button {
+    order: 3;
+  }
+
+  #panic-button {
+    order: 4;
+  }
+
+  #disconnect-button {
+    order: 5;
+  }
+
+  #noise-button {
+    order: 6;
+  }
+
+  .brightness-control {
+    grid-column: 1 / -1;
+    order: 7;
   }
 }
